@@ -24,6 +24,9 @@ export default {
   },
   methods: {
     addNote (event) {
+      if (event.target.value.toString().length === 0) {
+        return
+      }
       this.notes.push(event.target.value)
       event.target.value = ''
     },
@@ -54,8 +57,8 @@ a {
 input{
  margin: 30px;
  padding: 15px;
- width: 14%;
- height: 15%;
+ width: 202px;
+ height: 20px;
 }
 
 .remove_item{
