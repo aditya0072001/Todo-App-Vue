@@ -22,6 +22,12 @@ export default {
       notes: []
     }
   },
+  mounted () {
+    const notes = JSON.parse(this.$localStorage.get('notes'))
+    if (notes) {
+      this.notes = notes
+    }
+  },
   methods: {
     addNote (event) {
       if (event.target.value.toString().length === 0) {
@@ -29,6 +35,7 @@ export default {
       }
       this.notes.push(event.target.value)
       // this.$localStorage.set('notes', this.notes)
+      this.$localStorage.set('notes', JSON.stringify(this.notes))
       event.target.value = ''
     },
     removeitem (index) {
